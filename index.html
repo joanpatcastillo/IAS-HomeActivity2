@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+body {
+    text-align: center;
+    background-image: url('PUP LAGOON.png');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    border: 8px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: 850px;
+    padding: 30px 0px;
+    margin-top: 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 5px solid #8B0000; /* Add border properties */
+}
+
+p {
+    font-size: 17px;
+    max-width: 85%; /* Adjust as needed */
+    word-wrap: break-word;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0;
+}
+
+footer {
+    font-size: 25px;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+button {
+    background-color: #8B0000;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 20px;
+    }
+        
+button:hover {
+    background-color: #FF3131;
+        }
+</style>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Activity 2</title>
+
+</head>
+
+<div class="container">
+<body>
+<h1>AUTHORIZATION</h1>
+<p>This is a simple website that shows the difference between having AUTHORIZATION and not having AUTHORIZATION. The "Authorized Download" prompts a message to confirm if you want to proceed with the download while "Unauthorized Download" downloads a file without asking anything.</p>
+<button id="authorizedBtn">Authorized Download</button>
+<button id="unauthorizedBtn">Unauthorized Download</button>
+</div>
+
+<footer>Joanna Patricia A. Castillo | BSIT 3-1N</footer>
+
+<script>
+document.getElementById("authorizedBtn").addEventListener("click", function() {
+    var authorized = confirm("Do you authorize the download of this file?");
+
+    if (authorized) {
+        var fileContent = "<!DOCTYPE html><html><head><meta http-equiv='refresh' content='0;url=https://www.pup.edu.ph'></head><body></body></html>";
+        var blob = new Blob([fileContent], { type: "text/html" });
+        var link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "AUTHORIZED.html";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+});
+
+document.getElementById("unauthorizedBtn").addEventListener("click", function() {
+    var fileContent = "<!DOCTYPE html><html><head><meta http-equiv='refresh' content='0;url=https://www.pup.edu.ph'></head><body></body></html>";
+    var blob = new Blob([fileContent], { type: "text/html" });
+    var link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "NOTAUTHORIZED.html";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+});
+</script>
+
+</body>
+</html>
